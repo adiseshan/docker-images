@@ -1,0 +1,28 @@
+name: image-build-manual
+
+on:
+  workflow_dispatch:
+    inputs:
+      config_name:
+        description: 'image to build.. eg terraform-cicd:v1.5.4'
+        required: true
+
+jobs:
+
+  image-build-manual:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: build-and-push
+        id: build-and-push
+        uses: ./.github/actions/build-and-push
+        with:
+          registry: registry.hub.docker.com
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+          configs_dir: configs
+          config_name: ${{ github.event.inputs.config_name }}
