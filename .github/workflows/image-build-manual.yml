@@ -10,9 +10,7 @@ on:
 jobs:
 
   image-build-manual:
-    runs-on:
-      - self-hosted
-      - default-k8s-runner-linux-x64
+    runs-on: ubuntu-latest
     steps:
 
       - uses: actions/checkout@v3
