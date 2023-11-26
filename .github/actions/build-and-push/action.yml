@@ -2,9 +2,6 @@ name: 'build-and-push'
 description: 'build-and-push'
 
 inputs:
-  registry_remote:
-    description: 'registry'
-    required: true
   registry:
     description: 'registry'
     required: true
@@ -29,7 +26,7 @@ runs:
     - name: dock login
       uses: docker/login-action@v3
       with:
-        # registry: ${{ inputs.registry }}
+        registry: ${{ inputs.registry }}
         username: ${{ inputs.username }}
         password: ${{ inputs.password }}
 

@@ -19,4 +19,4 @@ copy_image.json:
 }
 ```
 
-See [node-exporter/v1.3.1/copy_image.json](node-exporter/v1.3.1/copy_image.json) for example. Be sure that the `to` value is prefixed by `devex-dock.artifactory-ha.tmc-stargate.com/commons/`.
+See [node-exporter/v1.3.1/copy_image.json](node-exporter/v1.3.1/copy_image.json) for example. Be sure that the `to` value is prefixed by `adiseshan/`.

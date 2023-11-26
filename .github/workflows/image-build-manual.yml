@@ -21,8 +21,7 @@ jobs:
         id: build-and-push
         uses: ./.github/actions/build-and-push
         with:
-          registry_remote: docker-remote.artifactory-ha.tmc-stargate.com
-          registry: devex-dock.artifactory-ha.tmc-stargate.com
+          registry: registry.hub.docker.com
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_TOKEN }}
           configs_dir: configs
