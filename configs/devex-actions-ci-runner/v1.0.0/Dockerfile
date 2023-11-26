@@ -1,4 +1,4 @@
-FROM docker-remote.artifactory-ha.tmc-stargate.com/amazonlinux:2023 as buildtool
+FROM amazonlinux:2023 as buildtool
 
 # install yamllint
 RUN yum install python311 tar gzip findutils -y
@@ -13,5 +13,5 @@ RUN dnf install git-2.40.1 -y
 RUN curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b /usr/local/bin
 
 # remove layers and reduce the size of image.
-FROM docker-remote.artifactory-ha.tmc-stargate.com/amazonlinux:2023
+FROM amazonlinux:2023
 COPY --from=buildtool / /

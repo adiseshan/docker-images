@@ -2,7 +2,7 @@
 set -e
 
 USAGE="export TARGET_IMAGE as IMAGE_NAME:IMAGE_TAG"
-REPO_HOST="${REPO_HOST:-devex-dock.artifactory-ha.tmc-stargate.com}"
+REPO_HOST="${REPO_HOST:-registry.hub.docker.com}"
 CONFIGS_DIR="${CONFIGS_DIR:-configs}"
 
 if [ -z "$TARGET_IMAGE" ]

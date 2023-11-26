@@ -6,7 +6,7 @@ USAGE="export TARGET_IMAGE as IMAGE_NAME:IMAGE_TAG"
 PLATFORM="${PLATFORM:-linux/x86_64}"
 # TARGET_IMAGE=$1
 DOCKER_REGISTRY_ORG="${DOCKER_REGISTRY_ORG:-commons}"
-REPO_HOST="${REPO_HOST:-devex-dock.artifactory-ha.tmc-stargate.com}"
+REPO_HOST="${REPO_HOST:-registry.hub.docker.com}"
 CONFIGS_DIR="${CONFIGS_DIR:-configs}"
 
 if [ -z "$TARGET_IMAGE" ] || ! echo "${TARGET_IMAGE}" | grep -E "[^:]+:[^:]+"

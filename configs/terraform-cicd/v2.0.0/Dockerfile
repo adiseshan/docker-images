@@ -1,5 +1,5 @@
 # 
-FROM docker-remote.artifactory-ha.tmc-stargate.com/amazonlinux:2023 as buildtool
+FROM amazonlinux:2023 as buildtool
 
 # Install aws cli
 RUN yum install aws-cli -y
@@ -37,5 +37,5 @@ RUN yum install python3-pip -y
 RUN yum install python3 -y
 RUN yum install openssl -y
 
-FROM docker-remote.artifactory-ha.tmc-stargate.com/amazonlinux:2
+FROM amazonlinux:2
 COPY --from=buildtool / /

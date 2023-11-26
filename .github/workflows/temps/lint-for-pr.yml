@@ -11,7 +11,7 @@ jobs:
       - self-hosted
       - default-k8s-runner-linux-x64
     container:
-      image: devex-dock.artifactory-ha.tmc-stargate.com/commons/devex-actions-ci-runner:v1.0.0
+      image: registry.hub.docker.com/commons/devex-actions-ci-runner:v1.0.0
       credentials:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_TOKEN }}
