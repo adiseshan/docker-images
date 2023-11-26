@@ -7,11 +7,9 @@ on:
 
 jobs:
   yaml:
-    runs-on:
-      - self-hosted
-      - default-k8s-runner-linux-x64
+    runs-on: ubuntu-laster
     container:
-      image: registry.hub.docker.com/commons/devex-actions-ci-runner:v1.0.0
+      image: adiseshan/actions-ci-runner:v1.0.0
       credentials:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_TOKEN }}
@@ -35,7 +33,7 @@ jobs:
           exit 0
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
-          GITHUB_API: https://github.tmc-stargate.com/api/v3/
+          GITHUB_API: https://api.github.com/api/v3/
           CI_PULL_REQUEST: ${{ github.event.number }}
           CI_REPO_OWNER: ${{ github.repository_owner }}
           CI_REPO_NAME: ${{ github.event.repository.name }}
