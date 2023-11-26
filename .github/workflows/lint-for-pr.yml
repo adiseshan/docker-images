@@ -7,7 +7,7 @@ on:
 
 jobs:
   yaml:
-    runs-on: ubuntu-laster
+    runs-on: ubuntu-latest
     container:
       image: adiseshan/actions-ci-runner:v1.0.0
       credentials:
