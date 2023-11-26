@@ -49,4 +49,3 @@ runs:
         DOCKER_REGISTRY_ORG: adiseshan
         CONFIGS_DIR: ${{ inputs.configs_dir }}
         TARGET_IMAGE: ${{ inputs.config_name }}
-        DRY_RUN: "true"
