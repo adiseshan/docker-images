@@ -1,0 +1,37 @@
+name: 'changed configs'
+description: 'changed configs'
+
+inputs:
+  INPUT_CONFIGS_DIR:
+    description: 'configs directory'
+    required: false
+    default: configs
+  INPUT_SHA_START:
+    description: 'sha_start'
+    required: true
+  INPUT_SHA_END:
+    description: 'sha_end'
+    required: true
+
+outputs:
+  changed_configs:
+    description: "Returns all changed configs based on git changed files -> combination of added, copied, modified and renamed files (ACMR)*"
+    value: ${{ steps.changed-configs.outputs.changed_configs }}
+
+runs:
+  using: composite
+
+  steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: List changed configs
+      id: changed-configs
+      shell: bash
+      run: |
+        bash ${GITHUB_ACTION_PATH}/changed-configs.sh
+      env:
+        CONFIGS_DIR: ${{ inputs.INPUT_CONFIGS_DIR }}
+        SHA_START: ${{ inputs.INPUT_SHA_START }}
+        SHA_END: ${{ inputs.INPUT_SHA_END }}

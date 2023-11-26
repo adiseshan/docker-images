@@ -1,0 +1,55 @@
+name: 'build-and-push'
+description: 'build-and-push'
+
+inputs:
+  registry_remote:
+    description: 'registry'
+    required: true
+  registry:
+    description: 'registry'
+    required: true
+  username:
+    description: 'username'
+    required: true
+  password:
+    description: 'password'
+    required: true
+  configs_dir:
+    description: 'configs_dir'
+    required: true
+  config_name:
+    description: 'config_name'
+    required: true
+
+runs:
+  using: composite
+
+  steps:
+
+    - name: dock login
+      uses: synced-actions/docker-login-action@v2
+      with:
+        # registry: ${{ inputs.registry }}
+        username: ${{ inputs.username }}
+        password: ${{ inputs.password }}
+
+    - name: docker-build
+      shell: bash
+      run: |
+        bash ${GITHUB_ACTION_PATH}/build.sh
+      env:
+        REPO_HOST: ${{ inputs.registry }}
+        DOCKER_REGISTRY_ORG: adiseshan
+        CONFIGS_DIR: ${{ inputs.configs_dir }}
+        TARGET_IMAGE: ${{ inputs.config_name }}
+
+    - name: docker-push
+      shell: bash
+      run: |
+        bash ${GITHUB_ACTION_PATH}/push.sh
+      env:
+        REPO_HOST: ${{ inputs.registry }}
+        DOCKER_REGISTRY_ORG: adiseshan
+        CONFIGS_DIR: ${{ inputs.configs_dir }}
+        TARGET_IMAGE: ${{ inputs.config_name }}
+        DRY_RUN: "true"
